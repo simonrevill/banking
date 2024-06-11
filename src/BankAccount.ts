@@ -19,10 +19,12 @@ export default class BankAccount implements IBankAccount {
     const month = new Date().getMonth() + 1;
     const date = new Date().getDate();
 
+    const lastTransaction = this.transactions[0];
+
     this.transactions.unshift({
       date: `${year}-${month}-${date}`,
       amount,
-      balance: amount,
+      balance: lastTransaction ? lastTransaction.balance + amount : amount,
     });
   }
 

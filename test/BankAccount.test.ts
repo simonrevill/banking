@@ -55,6 +55,20 @@ describe("bank account tests", () => {
       expect.stringContaining(`| ${balance}`)
     );
   });
+
+  it("prints a deposit row entry with the correct balance when there is an existing transaction", () => {
+    const firstDepositAmount = 500;
+    const secondDepositAmount = 1000;
+    const balance = 1500;
+
+    bankAccount.deposit(firstDepositAmount);
+    bankAccount.deposit(secondDepositAmount);
+    bankAccount.printStatement();
+
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(`| ${balance}`)
+    );
+  });
 });
 
 function getTodaysDateString() {
