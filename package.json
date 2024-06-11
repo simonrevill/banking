@@ -1,0 +1,23 @@
+{
+  "name": "banking",
+  "version": "0.0.1",
+  "description": "Practice repo for implementing the Bank Account challenge with the TDD workflow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonrevill/banking.git"
+  },
+  "keywords": [
+    "TDD",
+    "kata"
+  ],
+  "author": "Simon Revill",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/simonrevill/banking/issues"
+  },
+  "homepage": "https://github.com/simonrevill/banking#readme"
+}
