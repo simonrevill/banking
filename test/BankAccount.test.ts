@@ -73,6 +73,23 @@ describe("bank account tests", () => {
       bankAccount.withdraw(500);
     }).not.toThrow();
   });
+
+  it("prints a withdrawal row entry with the correct balance when a valid withrawal has been made", () => {
+    const dateString = getTodaysDateString();
+    const depositedAmount = 500;
+    const withdrawalAmount = 25;
+    const balance = 475;
+
+    bankAccount.deposit(depositedAmount);
+    bankAccount.withdraw(withdrawalAmount);
+    bankAccount.printStatement();
+
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        `${dateString} | -${withdrawalAmount} | ${balance}`
+      )
+    );
+  });
 });
 
 function getTodaysDateString() {

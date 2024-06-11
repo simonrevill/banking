@@ -20,6 +20,10 @@ export default class BankAccount implements IBankAccount {
   }
 
   withdraw(amount: number): void {
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    const date = new Date().getDate();
+
     const lastTransaction = this.transactions[0];
 
     if (!this.transactions.length) {
@@ -31,6 +35,12 @@ export default class BankAccount implements IBankAccount {
         `Insufficient funds. Your current balance is ${lastTransaction.balance}`
       );
     }
+
+    this.transactions.unshift({
+      date: `${year}-${month}-${date}`,
+      amount: -amount,
+      balance: lastTransaction.balance - amount,
+    });
   }
 
   printStatement(): void {
