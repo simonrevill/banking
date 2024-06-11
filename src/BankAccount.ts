@@ -5,6 +5,10 @@ import { IBankAccount, Transaction } from "./types";
 export default class BankAccount implements IBankAccount {
   transactions: Transaction[] = [];
 
+  addTransaction(transaction: Transaction) {
+    this.transactions.unshift(transaction);
+  }
+
   deposit(amount: number): void {
     const year = new Date().getFullYear();
     const month = new Date().getMonth() + 1;
@@ -12,7 +16,7 @@ export default class BankAccount implements IBankAccount {
 
     const lastTransaction = this.transactions[0];
 
-    this.transactions.unshift({
+    this.addTransaction({
       date: `${year}-${month}-${date}`,
       amount,
       balance: lastTransaction ? lastTransaction.balance + amount : amount,
@@ -36,7 +40,7 @@ export default class BankAccount implements IBankAccount {
       );
     }
 
-    this.transactions.unshift({
+    this.addTransaction({
       date: `${year}-${month}-${date}`,
       amount: -amount,
       balance: lastTransaction.balance - amount,
