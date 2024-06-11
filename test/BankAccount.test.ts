@@ -15,6 +15,6 @@ describe("bank account tests", () => {
   it("prints a table with a date, an amount, and a balance heading", () => {
     bankAccount.printStatement();
 
-    expect(logSpy).toHaveBeenCalledWith("Date | Amount | Balance");
+    expect(logSpy).toHaveBeenCalledWith(["Date | Amount | Balance"].join("\n"));
   });
 });
