@@ -9,25 +9,25 @@ export default class BankAccount implements IBankAccount {
     this.transactions.unshift(transaction);
   }
 
-  deposit(amount: number): void {
+  private getTransactionDateString(): string {
     const year = new Date().getFullYear();
     const month = new Date().getMonth() + 1;
     const date = new Date().getDate();
 
+    return `${year}-${month}-${date}`;
+  }
+
+  deposit(amount: number): void {
     const lastTransaction = this.transactions[0];
 
     this.addTransaction({
-      date: `${year}-${month}-${date}`,
+      date: this.getTransactionDateString(),
       amount,
       balance: lastTransaction ? lastTransaction.balance + amount : amount,
     });
   }
 
   withdraw(amount: number): void {
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth() + 1;
-    const date = new Date().getDate();
-
     const lastTransaction = this.transactions[0];
 
     if (!this.transactions.length) {
@@ -41,7 +41,7 @@ export default class BankAccount implements IBankAccount {
     }
 
     this.addTransaction({
-      date: `${year}-${month}-${date}`,
+      date: this.getTransactionDateString(),
       amount: -amount,
       balance: lastTransaction.balance - amount,
     });
