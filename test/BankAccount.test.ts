@@ -69,6 +69,12 @@ describe("bank account tests", () => {
       expect.stringContaining(`| ${balance}`)
     );
   });
+
+  it("should throw an error when trying to make a withdrawal when there are no previous transactions", () => {
+    expect(() => {
+      bankAccount.withdraw(1000);
+    }).toThrow("Insufficient funds. No previous transactions.");
+  });
 });
 
 function getTodaysDateString() {

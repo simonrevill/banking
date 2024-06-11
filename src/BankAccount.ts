@@ -2,6 +2,7 @@ import { NEWLINE_SEPARATOR } from "./constants";
 
 interface IBankAccount {
   deposit(amount: number): void;
+  withdraw(amount: number): void;
   printStatement(): void;
 }
 
@@ -26,6 +27,12 @@ export default class BankAccount implements IBankAccount {
       amount,
       balance: lastTransaction ? lastTransaction.balance + amount : amount,
     });
+  }
+
+  withdraw(amount: number): void {
+    if (!this.transactions.length) {
+      throw new Error("Insufficient funds. No previous transactions.");
+    }
   }
 
   printStatement(): void {
