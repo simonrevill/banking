@@ -24,27 +24,8 @@ describe("bank account tests", () => {
     );
   });
 
-  it("prints a deposit row entry with the date in YYYY-MM-DD format", () => {
+  it("prints a deposit row entry with the date in YYYY-MM-DD format, the amount, and the correct balance", () => {
     const dateString = getTodaysDateString();
-
-    bankAccount.deposit(1000);
-    bankAccount.printStatement();
-
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(dateString));
-  });
-
-  it("prints a deposit row entry with the amount deposited", () => {
-    const amount = 1000;
-
-    bankAccount.deposit(amount);
-    bankAccount.printStatement();
-
-    expect(logSpy).toHaveBeenCalledWith(
-      expect.stringContaining(amount.toString())
-    );
-  });
-
-  it("prints a deposit row entry with the correct balance", () => {
     const amount = 1000;
     const balance = amount;
 
@@ -52,7 +33,7 @@ describe("bank account tests", () => {
     bankAccount.printStatement();
 
     expect(logSpy).toHaveBeenCalledWith(
-      expect.stringContaining(`| ${balance}`)
+      expect.stringContaining(`${dateString} | ${amount} | ${balance}`)
     );
   });
 
