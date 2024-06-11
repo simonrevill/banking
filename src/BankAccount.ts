@@ -20,8 +20,16 @@ export default class BankAccount implements IBankAccount {
   }
 
   withdraw(amount: number): void {
+    const lastTransaction = this.transactions[0];
+
     if (!this.transactions.length) {
       throw new Error("Insufficient funds. No previous transactions.");
+    }
+
+    if (lastTransaction.balance < amount) {
+      throw new Error(
+        `Insufficient funds. Your current balance is ${lastTransaction.balance}`
+      );
     }
   }
 
