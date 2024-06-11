@@ -1,3 +1,5 @@
+import { NEWLINE_SEPARATOR } from "./constants";
+
 interface IBankAccount {
   deposit(amount: number): void;
   printStatement(): void;
@@ -29,7 +31,7 @@ export default class BankAccount implements IBankAccount {
       ...this.transactions.map((transaction) => {
         return `${transaction.date} | ${transaction.amount}`;
       }),
-    ].join("\n");
+    ].join(NEWLINE_SEPARATOR);
 
     console.log(statement);
   }
