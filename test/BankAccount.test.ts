@@ -9,7 +9,7 @@ describe("bank account tests", () => {
   });
 
   afterEach(() => {
-    logSpy.mockRestore();
+    logSpy.mockReset();
   });
 
   it("prints a table with a date, an amount, and a balance heading", () => {
@@ -19,4 +19,22 @@ describe("bank account tests", () => {
       expect.stringContaining("Date | Amount | Balance")
     );
   });
+
+  it("prints a deposit row entry with the date in YYYY-MM-DD format", () => {
+    const dateString = getTodaysDateString();
+
+    bankAccount.deposit(1000);
+    bankAccount.printStatement();
+
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(dateString));
+  });
 });
+
+function getTodaysDateString() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const date = today.getDate();
+
+  return `${year}-${month}-${date}`;
+}
