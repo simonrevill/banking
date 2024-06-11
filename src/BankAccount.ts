@@ -17,7 +17,7 @@ export default class BankAccount implements IBankAccount {
     return `${year}-${month}-${date}`;
   }
 
-  deposit(amount: number): void {
+  public deposit(amount: number): void {
     const lastTransaction = this.transactions[0];
 
     this.addTransaction({
@@ -27,7 +27,7 @@ export default class BankAccount implements IBankAccount {
     });
   }
 
-  withdraw(amount: number): void {
+  public withdraw(amount: number): void {
     const lastTransaction = this.transactions[0];
 
     if (!this.transactions.length) {
@@ -47,7 +47,7 @@ export default class BankAccount implements IBankAccount {
     });
   }
 
-  printStatement(): void {
+  public printStatement(): void {
     const statement = [
       "Date | Amount | Balance",
       ...this.transactions.map((transaction) => {
