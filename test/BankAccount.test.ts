@@ -28,6 +28,17 @@ describe("bank account tests", () => {
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(dateString));
   });
+
+  it("prints a deposit row entry with the amount deposited", () => {
+    const amount = 1000;
+
+    bankAccount.deposit(amount);
+    bankAccount.printStatement();
+
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(amount.toString())
+    );
+  });
 });
 
 function getTodaysDateString() {
