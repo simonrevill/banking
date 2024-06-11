@@ -8,7 +8,7 @@ interface IBankAccount {
 interface Transaction {
   date: string;
   amount: number;
-  balance?: number;
+  balance: number;
 }
 
 export default class BankAccount implements IBankAccount {
@@ -22,6 +22,7 @@ export default class BankAccount implements IBankAccount {
     this.transactions.unshift({
       date: `${year}-${month}-${date}`,
       amount,
+      balance: amount,
     });
   }
 
@@ -29,7 +30,7 @@ export default class BankAccount implements IBankAccount {
     const statement = [
       "Date | Amount | Balance",
       ...this.transactions.map((transaction) => {
-        return `${transaction.date} | ${transaction.amount}`;
+        return `${transaction.date} | ${transaction.amount} | ${transaction.balance}`;
       }),
     ].join(NEWLINE_SEPARATOR);
 

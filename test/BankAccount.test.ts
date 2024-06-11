@@ -43,6 +43,18 @@ describe("bank account tests", () => {
       expect.stringContaining(amount.toString())
     );
   });
+
+  it("prints a deposit row entry with the correct balance", () => {
+    const amount = 1000;
+    const balance = amount;
+
+    bankAccount.deposit(amount);
+    bankAccount.printStatement();
+
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(`| ${balance}`)
+    );
+  });
 });
 
 function getTodaysDateString() {
