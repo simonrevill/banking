@@ -1,16 +1,6 @@
 import { NEWLINE_SEPARATOR } from "./constants";
 
-interface IBankAccount {
-  deposit(amount: number): void;
-  withdraw(amount: number): void;
-  printStatement(): void;
-}
-
-interface Transaction {
-  date: string;
-  amount: number;
-  balance: number;
-}
+import { IBankAccount, Transaction } from "./types";
 
 export default class BankAccount implements IBankAccount {
   transactions: Transaction[] = [];
