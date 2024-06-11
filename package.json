@@ -4,7 +4,9 @@
   "description": "Practice repo for implementing the Bank Account challenge with the TDD workflow.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll",
+    "test:coverage": "jest --watchAll --coverage",
+    "test:mutation": "npx stryker run"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/simonrevill/banking/issues"
   },
-  "homepage": "https://github.com/simonrevill/banking#readme"
+  "homepage": "https://github.com/simonrevill/banking#readme",
+  "devDependencies": {
+    "@stryker-mutator/jest-runner": "^8.2.6",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
 }
