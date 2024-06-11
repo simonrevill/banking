@@ -82,6 +82,13 @@ describe("bank account tests", () => {
       bankAccount.withdraw(1000);
     }).toThrow("Insufficient funds. Your current balance is 500");
   });
+
+  it("should not throw an error when trying to make a withdrawal that is equal to the funds available", () => {
+    expect(() => {
+      bankAccount.deposit(500);
+      bankAccount.withdraw(500);
+    }).not.toThrow();
+  });
 });
 
 function getTodaysDateString() {
