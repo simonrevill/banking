@@ -12,6 +12,10 @@ describe("bank account tests", () => {
     logSpy.mockReset();
   });
 
+  it("should initialise a bank account with an empty transaction list", () => {
+    expect(bankAccount.transactions).toEqual([]);
+  });
+
   it("prints a table with a date, an amount, and a balance heading", () => {
     bankAccount.printStatement();
 
