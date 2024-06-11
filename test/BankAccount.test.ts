@@ -12,9 +12,9 @@ describe("bank account tests", () => {
     logSpy.mockRestore();
   });
 
-  it("prints a table with a date and an amount heading", () => {
+  it("prints a table with a date, an amount, and a balance heading", () => {
     bankAccount.printStatement();
 
-    expect(logSpy).toHaveBeenCalledWith("Date | Amount |");
+    expect(logSpy).toHaveBeenCalledWith("Date | Amount | Balance");
   });
 });

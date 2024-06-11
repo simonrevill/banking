@@ -4,6 +4,6 @@ interface IBankAccount {
 
 export default class BankAccount implements IBankAccount {
   printStatement(): void {
-    console.log("Date | Amount |");
+    console.log("Date | Amount | Balance");
   }
 }
