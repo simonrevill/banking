@@ -3,7 +3,7 @@ import { NEWLINE_SEPARATOR } from "./constants";
 import { IBankAccount, Transaction } from "./types";
 
 export default class BankAccount implements IBankAccount {
-  transactions: Transaction[] = [];
+  public transactions: Transaction[] = [];
 
   private addTransaction(transaction: Transaction): void {
     this.transactions.unshift(transaction);
