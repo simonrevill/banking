@@ -38,6 +38,7 @@ describe("bank account tests", () => {
   });
 
   it("prints a deposit row entry with the correct balance when there is an existing transaction", () => {
+    const dateString = getTodaysDateString();
     const firstDepositAmount = 500;
     const secondDepositAmount = 1000;
     const balance = 1500;
@@ -47,7 +48,9 @@ describe("bank account tests", () => {
     bankAccount.printStatement();
 
     expect(logSpy).toHaveBeenCalledWith(
-      expect.stringContaining(`| ${balance}`)
+      expect.stringContaining(
+        `${dateString} | ${secondDepositAmount} | ${balance}`
+      )
     );
   });
 
