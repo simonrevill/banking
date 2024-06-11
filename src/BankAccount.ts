@@ -5,7 +5,7 @@ import { IBankAccount, Transaction } from "./types";
 export default class BankAccount implements IBankAccount {
   transactions: Transaction[] = [];
 
-  addTransaction(transaction: Transaction): void {
+  private addTransaction(transaction: Transaction): void {
     this.transactions.unshift(transaction);
   }
 
